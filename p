@@ -1,8 +1,13 @@
-alias s="sqlite3 -list d"
-s "SELECT t FROM p WHERE p = $1;"
-s "SELECT d FROM d WHERE p = $1 ORDER BY i ASC;"
+alias q="sqlite3 -list d"
+s=SELECT
+f=FROM
+w="WHERE p=$1"
+q "$s t $f p $w;"
+q "$s d $f d $w ORDER BY i ASC;"
 echo
-s "SELECT m FROM m WHERE i = 1 AND NOT EXISTS (SELECT * FROM t WHERE p = $1);"
-s "SELECT m FROM m WHERE i = 2 AND EXISTS (SELECT * FROM t WHERE p = $1);"
-s -separator "  " "SELECT t, d FROM t WHERE p = $1;"
+m="$s m $f m WHERE i"
+e="EXISTS ($s*$f t $w);"
+q "$m=1 AND NOT $e"
+q "$m=2 AND $e"
+q -separator "  " "$s t,d $f t $w;"
 
