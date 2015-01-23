@@ -5,7 +5,7 @@ sqlite3 game.db <<- EOF
     DROP TABLE IF EXISTS pages;
     CREATE TABLE pages
     (
-        page_id INT,
+        page INT,
         title VARCHAR
     );
 
@@ -20,7 +20,7 @@ sqlite3 game.db <<- EOF
     DROP TABLE IF EXISTS turns;
     CREATE TABLE turns
     (
-        page_from INT,
+        page INT,
         page_to INT,
         description VARCHAR
     );
